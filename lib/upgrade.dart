@@ -6,10 +6,6 @@ import 'package:my_app/upgrade_package_model.dart';
 Widget _generatePackageCard({required UpgradePackage package, required BuildContext context}) {
   Widget textPopup = Card(
     margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
-    shape: RoundedRectangleBorder(
-      side: const BorderSide(color: Colors.black54, width: 1),
-      borderRadius: BorderRadius.circular(10),
-    ),
     child: GestureDetector(
       onTap: () {
         showDialog(
@@ -40,7 +36,7 @@ Widget _generatePackageCard({required UpgradePackage package, required BuildCont
         );
       },
       child: Container(
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.all(15),
           decoration: const BoxDecoration(
             color: Colors.white,
           ),
@@ -138,7 +134,7 @@ Widget contentPopup(UpgradePackage upgradePackage, BuildContext context) {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 SizedBox(
-                  width: 138.0,
+                  width: 130.0,
                   child: ElevatedButton(
                     onPressed: null,
                     style: ButtonStyle(
@@ -157,7 +153,7 @@ Widget contentPopup(UpgradePackage upgradePackage, BuildContext context) {
                 ),
                 const SizedBox(width: 20),
                 SizedBox(
-                  width: 138.0,
+                  width: 130.0,
                   child: ElevatedButton(
                     onPressed: () => Navigator.pop(context),
                     style: ButtonStyle(
@@ -190,14 +186,21 @@ Widget boxUpgrade(UpgradePackage upgradePackage){
   final int price = upgradePackage.price??=0;
   final String month = upgradePackage.month??='';
   final String note = upgradePackage.note??='';
-  return Center(
-    child: ListView(
+  return ListView(
       children: <Widget>[
-        Text(promotion),
-        Text(price.toString()),
-        Text(month),
-        Text(note)
+        Center(
+          child: Text(promotion.toUpperCase(), style: const TextStyle(color: Color(
+              0xffff5454), fontWeight: FontWeight.w600, fontStyle:  FontStyle.italic)),
+        ),
+        Center(
+          child: Text('$priceđ', style: const TextStyle(color: Color(0xff1c4587), fontWeight: FontWeight.w600, fontSize: 16)),
+        ),
+        Center(
+          child: Text(month, style: const TextStyle(fontWeight: FontWeight.w600)),
+        ),
+        Center(
+          child: Text('*$note', style: const TextStyle(fontSize: 12)),
+        ),
       ] ,
-    ),
   );
 }
